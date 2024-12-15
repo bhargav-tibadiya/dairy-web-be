@@ -1,18 +1,21 @@
+// packages
 const express = require('express')
 
+// config and mmiddlewares
 const { connectDB } = require('./config/database')
 const errorHandler = require('./middlewares/errorhandler')
 
+// Routes
+const authRoutes = require('./routes/auth');
+
 const app = express();
 
-// Connect to the database
 connectDB();
 
-// Middleware to parse JSON request body
 app.use(express.json());
 
 // Routes
-// app.use('/api/products', productRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 // Use the custom error handler middleware
 app.use(errorHandler);
