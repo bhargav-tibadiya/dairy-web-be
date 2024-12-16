@@ -30,13 +30,13 @@ const productSchema = new mongoose.Schema(
       required: [true, 'Please provide the stock quantity'],
       min: [0, 'Stock cannot be less than 0'],
     },
-    images: {
+    image: {
       type: String,
       required: [true, 'Please provide a product image URL'],
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt
+    timestamps: true,
   }
 );
 

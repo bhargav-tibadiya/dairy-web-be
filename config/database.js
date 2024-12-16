@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const logger = require('../services/logger')
-const ErrorResponse = require('../utils/errorResponse')
+const ErrorResponse = require('../utils/customResponse')
 
 require('dotenv').config();
 

@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const mailSender = require('../services/mail');
 const logger = require('../services/logger');
-const ErrorResponse = require('../utils/errorResponse');
+const ErrorResponse = require('../utils/customResponse');
 
 // --> Defining Schema for OTP <--
 const otpSchema = new mongoose.Schema({
@@ -25,11 +25,11 @@ const otpSchema = new mongoose.Schema({
 // --> Function to Send Verification Email <--
 const sendVerificationEmail = async (email, otp) => {
   try {
-    await mailSender(email, 'Verification Email from EduSpark', otp);
+    await mailSender(email, 'Verification Email from Dairy Web', otp);
     logger.info(`Verification email sent successfully to ${email}`);
   } catch (error) {
     logger.error(`Error while sending verification email to ${email}: ${error.message}`);
-    throw new ErrorResponse('Failed to send verification email.', 500); // Custom error
+    throw new ErrorResponse('Failed to send verification email.', 500);
   }
 };
 
@@ -39,7 +39,7 @@ otpSchema.pre('save', async function (next) {
     await sendVerificationEmail(this.email, this.otp);
   } catch (error) {
     logger.error(`OTP pre-save middleware error: ${error.message}`);
-    return next(error); // Pass the error to Mongoose's error handler
+    return next(error);
   }
   next();
 });

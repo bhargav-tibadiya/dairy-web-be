@@ -1,5 +1,5 @@
 const cloudinary = require("cloudinary").v2;
-const ErrorResponse = require("../utils/errorResponse");
+const ErrorResponse = require("../utils/customResponse");
 const logger = require("../services/logger");
 
 exports.cloudinaryConnect = () => {

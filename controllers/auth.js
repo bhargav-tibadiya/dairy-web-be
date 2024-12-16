@@ -2,7 +2,7 @@ const OTP = require('../models/otp');
 const User = require('../models/user');
 
 const logger = require('../services/logger');
-const ErrorResponse = require('../utils/errorResponse');
+const ErrorResponse = require('../utils/customResponse');
 const { generateOtp } = require('../utils/helper');
 
 exports.sendOtp = async (req, res, next) => {
